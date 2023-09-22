@@ -1,0 +1,563 @@
+:root {
+    --primary-color-light: rgba(255, 165, 0, 0.5); /* Semi-transparent orange for light primary color */
+    --primary-color: rgba(0, 179, 255, 0.5); /* Semi-transparent yellow for primary color */
+    --primary-color-dark: rgba(0, 0, 255, 0.5); /* Semi-transparent blue for dark primary color */
+    --secondary-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white for secondary color */
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+    background-color: var(--primary-color-dark);
+    border-radius: 10px;
+}
+
+/* Scrollbar Handle */
+::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+    border-radius: 10px;
+}
+
+/* Hover effect for the scrollbar handle */
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--accent-color-hover);
+}
+
+/* Scrollbar Button (for up and down arrows) */
+::-webkit-scrollbar-button {
+    display: none; /* Hide scrollbar buttons */
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-image: linear-gradient(45deg, var(--primary-color-light), var(--primary-color), var(--primary-color-dark));
+    background-color: var(--primary-color);
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    height: 100%;
+    margin: 0;
+    overflow-y: hidden; /* Hide vertical scrollbar */
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background: linear-gradient(rgba(35, 49, 56, 0.8), rgba(35, 49, 56, 0.2));
+    overflow-x: hidden;
+    transition: width 0.5s;
+    padding-top: 4rem;
+    backdrop-filter: blur(10px);
+}
+
+.sidenav p.is-title {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    display: block;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.sidenav p:hover {
+    color: white;
+}
+
+.sidenav > ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.sidenav > ul > li {
+    font-size: 1rem;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem;
+    margin-inline: 1em;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 3px 3px rgba(35, 49, 56, 0.5);
+}
+
+.sidenav > ul > li.is-active {
+    box-shadow: 3px 3px yellow;
+}
+
+.sidenav > ul > li.is-active:hover {
+    box-shadow: 3px 3px orange;
+}
+
+.sidenav > ul > li:hover {
+    color: var(--primary-color-dark);
+    cursor: pointer;
+    box-shadow: 3px 3px var(--primary-color-dark);
+}
+  
+.sidenav #sidebar-close {
+    color: gray;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 2.25rem;
+    margin-left: 50px;
+}
+
+.container {
+    width: min(99%, 90.5rem);
+    margin-inline: auto;
+    overflow-x: auto;
+    min-height: 85%;
+}
+
+#cards-container {
+    display: flex;
+    flex-wrap:nowrap;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.85rem;
+}
+
+.parent-card {
+    flex-shrink: 0;
+    padding: 1rem 0.5rem;
+    border-radius: 0.3rem;
+    width: 18.5rem;
+    box-shadow: 3px 3px 3px rgba(17, 17, 17, 0.150);
+    background: linear-gradient(45deg, rgba(157, 154, 154, 0.7), rgba(255, 255, 255, 0.7));
+}
+.card-title {
+    font-size: 1.2rem;
+}
+
+.item-title {
+    font-size: 1rem;
+}
+
+.parent-card > ul {
+    max-height: 20rem;
+    overflow-y: auto;
+    padding-left: 0;
+    list-style: none;
+}
+
+.parent-card > span {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.parent-card > ul > li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    background-color: #f3f3f3;
+    padding: 0.5rem;
+    margin-right: 0.5em;
+    margin-bottom: 0.7rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 2px rgba(107, 107, 107, 0.63);
+    width: 17rem;
+}
+
+.parent-card > ul > li > span {
+    letter-spacing: 0.7rem;
+}
+
+.fa {
+    display: block;
+    left: 50%;
+}
+
+.fa:hover, #sidebar-button:hover {
+    cursor: pointer;
+    color: var(--primary-color-light);
+}
+
+.parent-card > ul > li > p {
+    margin: 0;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+.text-fix {
+	word-break: break-all;
+    text-overflow: ellipsis;
+    margin: 15.936px 0px;
+}
+
+.unselectable {
+    user-select: none;
+}
+
+#title {
+    color: white;
+    margin: 0;
+    font-weight: 600;
+
+    background-color: rgba(14, 14, 14, 0.15);
+    padding-inline: 1rem;
+    border-radius: 1rem;
+}
+
+input[type="text"] {
+    border: none;
+    border-bottom: 2px solid black;
+    font-size: 1em;
+    width: 15rem;
+    background-color: transparent;
+}
+
+input[type="text"]:focus {
+    border: none;
+    border-bottom: 2px solid var(--primary-color);
+    outline: none;
+}
+
+#add-card > input[type="text"]::placeholder {
+    color: black;
+}
+
+#add-card > input[type="text"]:focus {
+    border: none;
+    border-bottom: 2px solid var(--secondary-color);
+    outline: none;
+}
+
+#add-board-button {
+    border: none;
+    font-size: 1rem;
+    border-radius: 1rem;
+    background-color: var(--primary-color);
+    color: black;
+    padding: 0.5em 1em;
+    box-shadow: 0px 2px var(--primary-color-light);
+    margin-bottom: 2rem;
+}
+
+#add-board-button:hover {
+    cursor: pointer;
+    color: white;
+    box-shadow: 0px 2px white;
+}
+
+#add-board-text {
+    width:100%;
+    color:white;
+}
+
+.plus-button {
+    border: none;
+    font-size: 1.5em;
+    border-radius: 100%;
+    background-color: var(--primary-color-dark);
+    color: rgb(94, 92, 92);
+    padding: 0.23em 0.51em;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.plus-button:hover {
+    background-color: var(--primary-color-light);
+}
+
+.header-flex {
+    margin-inline: 2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 1rem 0.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #3498db, #ffffff); /* Blue to white gradient */
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease;
+}
+
+.header-flex:hover {
+    background: linear-gradient(to right, #2980b9, #ffffff); /* Blue to white gradient on hover */
+}
+
+/* Rest of the styles remain the same */
+.header-flex a {
+    color: #333;
+    text-decoration: none;
+    margin: 0 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+    transition: background-color 0.3s ease;
+}
+
+.header-flex a:hover {
+    background-color: #ddd;
+}
+.title-actions-container {
+    display: flex;
+    align-items: center;
+}
+
+.user-logo {
+    margin-right: 1rem; /* Adjust margin as needed */
+}
+
+/* Styles for the "Invite" button */
+#invite-button {
+    padding: 0.5rem 1rem;
+    margin-left: 1rem; /* Adjust margin as needed */
+    background-color: #3498db; /* Change to desired color */
+    color: white;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+}
+
+#invite-button:hover {
+    background-color: #2980b9; /* Change to desired hover color */
+}
+
+
+.header-flex .icon-button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.header-flex .icon-button:hover {
+    background-color: #2980b9;
+}
+
+.flex-col {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Context Menu */
+
+.context-menu {
+    background: #ebebeb;
+    border-radius: 0.2rem;
+    box-shadow: 1px 1px 5px rgba(17, 17, 17, 0.200);
+
+    position: fixed;
+    z-index: 15;
+    width: 150px;
+    display: none;
+
+    transform: scale(0);
+    transform-origin: top left;
+}
+
+.context-menu.visible {
+    display: block;
+    transform: scale(1);
+    transition: transform 200ms ease-in-out;
+}
+
+.context-menu ul li {
+    cursor: pointer;
+    padding-inline: 0.5rem;
+    padding-block: 0.2rem;
+}
+
+.context-menu ul li:hover {
+    background:#d9d9d9;
+}
+
+.context-menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#alert-container {
+    position: relative;
+}
+
+#alerts {
+    position: absolute;
+    bottom: 20px;
+    right:40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.alert {
+    background-color: white;
+    color: black;
+    padding-block: 0.2rem;
+    padding-inline: 2rem;
+    border-left: 5px solid red;
+    border-radius: 0.5rem;
+    box-shadow: 2px 2px 5px rgba(107, 107, 107, 0.63);
+}
+
+.animate-hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.35s, opacity 0.35s linear;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 20%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* Modal Content */
+.dialog-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+}
+
+/* The Close Button */
+.confirm-dialog-close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.confirm-dialog-text {
+    margin-top: 1rem;
+}
+
+.confirm-dialog-close:hover,
+.confirm-dialog-close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.confirm-dialog-actions {
+    margin-top: 2rem;
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.confirm-dialog-cancel {
+    border: none;
+    background-color: inherit;
+    padding: 7px 14px;
+    cursor: pointer;
+    display: inline-block;
+    color: indianred;
+}
+
+.confirm-dialog-confirm {
+    border: 2px solid var(--primary-color-dark);
+    background-color: white;
+    padding: 7px 14px;
+    cursor: pointer;
+    color: var(--primary-color-dark);
+}
+
+#sidebar-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin:0;
+    background-color: rgba(14, 14, 14, 0.15);
+    padding-inline: 1rem;
+    border-radius: 1rem;
+}
+
+.title-actions-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+
+    background-color: rgba(14, 14, 14, 0.15);
+    padding-inline: 1rem;
+    border-radius: 1rem;
+}
+
+.auto-save-text {
+    font-size: 16px;
+    letter-spacing: 0;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 2rem;
+    height: 1.2rem;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 0.75rem;
+    width: 0.75rem;
+    left: 0.2rem;
+    bottom: 0.25rem;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(0.8rem);
+}
