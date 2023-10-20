@@ -1,6 +1,6 @@
 "use strict";
 
-
+//if you ever got the assignment from zuddle do it in some framework they won't be accepting someone who is doing in vanilla css or js
 
 /* <=================================== Elements / Variables ===================================> */
 const e_mainContainer = document.getElementById('main-container');
